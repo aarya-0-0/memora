@@ -34,10 +34,12 @@ def folders():
 def add():
     return render_template('add.html')
 
-@app.route('/create-mem-folder')
+@app.route('/create-mem-folder', methods=['GET','POST'])
 def create_mem_folder():
     folder_name=request.form['folder_name']
     folder_description=request.form['folder_description']
+    cursor.execute('insert into folders (folder_name,folder_description) values(%s,%s)',(folder_name, folder_description))
+    db.commit()
     return redirect('/')
 
 
