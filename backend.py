@@ -23,7 +23,12 @@ def home():
 
 @app.route('/folders')
 def folders():
-    return render_template('folders.html')
+    cursor.execute("select * from folders")
+    folders=cursor.fetchall()
+    if not folders:
+        return render_template('Nofolders.html')
+        
+    return render_template('folders.html', folders=folders)
 
 if __name__=='__main__':
     app.run(debug=True)
