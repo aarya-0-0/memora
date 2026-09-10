@@ -91,11 +91,7 @@ hr{
     display: grid;
     padding: 50px;
 }
-img{
-    object-fit: contain;
-    margin:20px auto;
-    padding: 40px;    
-}
+
 .folder-card h2,
 .folder-card p {
     margin-left: 20px;
@@ -127,4 +123,9 @@ img{
     height: 100%;
     object-fit: cover;
     display: block;
+}
+.folder-card img {
+    object-fit: contain;
+    margin: 20px auto;
+    padding: 40px;
 }
