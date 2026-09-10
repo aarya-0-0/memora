@@ -102,7 +102,37 @@ def delete_media(media_id):
         return redirect(f'/media-page/{folder_id}')
     return redirect('/')
 
+@app.route('/delete-folder/<int:folder_id>', methods=['POST'])
+def delete_folder(folder_id):
 
+    cursor.execute(
+        "select folder_name from folders where folder_id=%s",
+        (folder_id,)
+    )
+    folder = cursor.fetchone()
+
+    if folder:
+        folder_name = folder[0]
+
+        folder_path = os.path.join('media', folder_name)
+
+        if os.path.exists(folder_path):
+            import shutil
+            shutil.rmtree(folder_path)
+
+        cursor.execute(
+            "delete from media where folder_id=%s",
+            (folder_id,)
+        )
+
+        cursor.execute(
+            "delete from folders where folder_id=%s",
+            (folder_id,)
+        )
+
+        db.commit()
+
+    return redirect('/folders')
 
 if __name__=='__main__':
     app.run(debug=True)
