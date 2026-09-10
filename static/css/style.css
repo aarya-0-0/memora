@@ -75,3 +75,28 @@ hr{
     background-color: deeppink;
 }
 
+.folder-card{
+    color: deeppink;
+    background-color: pink;
+    width: 100%;
+    font-size: 25px;
+    border-radius: 20px;
+
+
+}
+
+.folder-container{
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    padding: 50px 50px;
+}
+img{
+    object-fit: contain;
+    margin:20px auto;
+    padding: 40px;    
+}
+.folder-card h2,p{
+    margin-left: 20px;
+    
+}

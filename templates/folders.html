@@ -2,4 +2,13 @@
 {%block title%}Memora - Mem-Folders {%endblock%}
 {%block content%}
 <h1> Your Mem-Folder Collection </h1>
+<div class="folder-container">
+{%for folder in folders%}
+<div class="folder-card">
+<img src="{{url_for('static', filename='images/folder.png')}}">
+<h2>{{folder[1]}}</h2>
+<p>{{folder[2]}}</p>
+</div>
+</div>
+{%endfor%}
 {%endblock%}
