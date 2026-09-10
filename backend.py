@@ -46,7 +46,7 @@ def create_mem_folder():
 
 @app.route('/media-page/<int:folder_id>', methods=['GET','POST'])
 def media_page(folder_id):
-    cursor.execute("Select folder_name from folders where   folder_id=%s"),(folder_id,)
+    cursor.execute("Select folder_name from folders where   folder_id=%s",(folder_id,))
     folder=cursor.fetchone()
     cursor.execute("Select * from media where folder_id=%s",(folder_id,))
     media=cursor.fetchall()
@@ -57,10 +57,7 @@ def media_page(folder_id):
 def add_media():
     folder_id = request.form['folder_id']
 
-    cursor.execute(
-        'select folder_name from folders where folder_id=%s',
-        (folder_id,)
-    )
+    cursor.execute('select folder_name from folders where folder_id=%s',(folder_id,))
     folder = cursor.fetchone()
 
     folder_name= folder[0]
