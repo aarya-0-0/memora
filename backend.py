@@ -42,6 +42,9 @@ def create_mem_folder():
     db.commit()
     return redirect('/')
 
+@app.route('/media-page', methods=['GET','POST'])
+def media_page():
+    return render_template('media.html')
 
 if __name__=='__main__':
     app.run(debug=True)

@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%block title%} Memora - Media {%endblock%}
+
+{%block content%}
+<h1>Have fun recalling</h1>
+<div class="media">
+    <form method="post" action="/add-media" enctype="multipart/form-data">
+    <input name="media" type="file" id="media-upload" accept="image/*,video/*" multiple  hidden>
+    <label for="media-upload" class="button">+ Add Media</label>
+</form>
+</div>
+{%endblock%}

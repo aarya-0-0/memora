@@ -101,3 +101,8 @@ img{
     margin-left: 20px;
 }
     
+.media {
+    color: pink;
+    margin:auto;
+    display: block;
+}
