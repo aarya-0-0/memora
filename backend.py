@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, render_template
 from dotenv import load_dotenv
 import mysql.connector 
 import os
@@ -17,3 +17,13 @@ try:
 except Exception as e:
     print("Connection Failed :( ", e)
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/folders')
+def folders():
+    return render_template('folders.html')
+
+if __name__=='__main__':
+    app.run(debug=True)

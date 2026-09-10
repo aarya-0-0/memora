@@ -1,0 +1,40 @@
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+body h1{
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: cursive;
+    color:deeppink;
+}
+.navbar {
+    display: flex;
+    color: pink;
+    background-color: deeppink;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 10px;
+    
+}
+.navlinks{
+    margin-left: auto;
+    
+}
+.navlinks a{
+    color: pink;
+    text-decoration: none;
+    margin-left: 15px;
+}
+.footer{
+    background: deeppink;
+    color: pink;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;;
+}
