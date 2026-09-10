@@ -112,14 +112,6 @@ def delete_folder(folder_id):
     folder = cursor.fetchone()
 
     if folder:
-        folder_name = folder[0]
-
-        folder_path = os.path.join('media', folder_name)
-
-        if os.path.exists(folder_path):
-            import shutil
-            shutil.rmtree(folder_path)
-
         cursor.execute(
             "delete from media where folder_id=%s",
             (folder_id,)
