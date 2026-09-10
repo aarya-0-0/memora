@@ -12,27 +12,71 @@
 <div class="media-container">
         {% for item in media %}
             {%if item[2]=='image'%}
+
             <div class="media-item">
-            <img src="{{url_for('serve_media', folder_name=folder_name, filename=item[3])}}">
+            <img src="{{url_for('serve_media', folder_name=folder_name, filename=item[3])}}", onclick="openViewer(this)">
             <form method="POST" action="/delete-media/{{ item[0] }}">
             <button type="submit">Delete</button>
             </form>
             </div>
+
             {%elif item[2] == 'video' %}
             <div class="media-item">
-        <video controls>
+            <video controls>
             <source src="{{url_for('serve_media',folder_name=folder_name, filename=item[3])}}">
+            </video>
             <form method="POST" action="/delete-media/{{ item[0] }}">
-            <button type="submit">Delete</button>
+            <button type="submit" class="button">Delete</button>
             </form>
-        </video>
         </div>
+
         {%endif%}
         {%endfor%}
     </div> 
+    <div id="image-viewer">
+    <span id="close-viewer">&times;</span>
+
+    <button id="previous-image">&lt;</button>
+
+    <img id="full-image">
+
+    <button id="next-image">&gt;</button>
+</div>
+</div>
 <script>
 document.getElementById('media-upload').addEventListener('change', function () {
     this.form.submit();
+});
+let images = document.querySelectorAll('.media-item img');
+let currentImage = 0;
+function openViewer(image) {
+    currentImage = Array.from(images).indexOf(image);
+
+    document.getElementById('full-image').src = image.src;
+    document.getElementById('image-viewer').style.display = 'flex';
+}
+document.getElementById('close-viewer').addEventListener('click', function () {
+    document.getElementById('image-viewer').style.display = 'none';
+});
+document.getElementById('previous-image').addEventListener('click', function () {
+    currentImage--;
+
+    if (currentImage < 0) {
+        currentImage = images.length - 1;
+    }
+
+    document.getElementById('full-image').src = images[currentImage].src;
+});
+
+
+document.getElementById('next-image').addEventListener('click', function () {
+    currentImage++;
+
+    if (currentImage >= images.length) {
+        currentImage = 0;
+    }
+
+    document.getElementById('full-image').src = images[currentImage].src;
 });
 </script>
 </div>

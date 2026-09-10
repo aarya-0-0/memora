@@ -112,20 +112,75 @@ hr{
 
 .media-item {
     width: 100%;
-    height: 250px;
-    overflow: hidden;
     border-radius: 15px;
 }
 
 .media-item img,
 .media-item video {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
     display: block;
+    border-radius: 15px;
 }
-.folder-card img {
+
+.media-item form {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.media-item button {
+    background-color: deeppink;
+    color: pink;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#image-viewer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#full-image {
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
-    margin: 20px auto;
-    padding: 40px;
+}
+#close-viewer {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}
+#previous-image,
+#next-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    background: none;
+    border: none;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#previous-image {
+    left: 30px;
+}
+
+#next-image {
+    right: 30px;
 }
