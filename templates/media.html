@@ -14,11 +14,17 @@
             {%if item[2]=='image'%}
             <div class="media-item">
             <img src="{{url_for('serve_media', folder_name=folder_name, filename=item[3])}}">
+            <form method="POST" action="/delete-media/{{ item[0] }}">
+            <button type="submit">Delete</button>
+            </form>
             </div>
             {%elif item[2] == 'video' %}
             <div class="media-item">
         <video controls>
             <source src="{{url_for('serve_media',folder_name=folder_name, filename=item[3])}}">
+            <form method="POST" action="/delete-media/{{ item[0] }}">
+            <button type="submit">Delete</button>
+            </form>
         </video>
         </div>
         {%endif%}

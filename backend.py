@@ -81,6 +81,28 @@ def add_media():
 @app.route('/media/<folder_name>/<filename>')
 def serve_media(folder_name,filename):
     return send_from_directory(os.path.join('media',folder_name,),filename)
+@app.route('/delete-media/<int:media_id', methods='POST')
+def delete_media(media_id):
+    cursor.execute("select folder_id and media_name from media where media_id=%s",(media_id,))
+    media=cursor.fetchone()
+    if media:
+        folder_id=media[0]
+        media_name=media[1]
+
+        cursor.execute("select folder_name from folders where folder_id=%s",(folder_id,))
+        folder=cursor.fetchone()
+        folder_name=folder[0]
+        file_path=os.path.join('media',folder_name,media_name)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            
+        cursor.execute("Delete from media where media_id=%s",(media_id,))
+        db.commit()
+        return redirect(f'/media-page/{folder_id}')
+    return redirect('/')
+
+
 
 if __name__=='__main__':
     app.run(debug=True)
+
