@@ -8,6 +8,17 @@
     <input type="hidden" name="folder_id" value="{{ folder_id }}">
     <input name="media" type="file" id="media-upload" accept="image/*,video/*" multiple  hidden>
     <label for="media-upload" class="button">+ Add Media</label>
+    <div class="media-container">
+        {% for item in media %}
+            {%if item[2]=='image'%}
+            <img src="{{url_for('serve_media', folder_name=folder_name, filename=item[3])}}">
+            {%elif item[2] == 'video' %}
+        <video controls>
+            <source src="{{url_for('serve_media',folder_name=folder_name, filename=item[3])}}">
+        </video>
+        {%endif%}
+        {%endfor%}
+    </div> 
 </form>
 <script>
 document.getElementById('media-upload').addEventListener('change', function () {

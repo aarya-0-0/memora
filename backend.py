@@ -1,7 +1,9 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request,send_from_directory
 from dotenv import load_dotenv
 import mysql.connector 
 import os
+import mimetypes
+
 
 app=Flask(__name__)
 load_dotenv()
@@ -44,7 +46,12 @@ def create_mem_folder():
 
 @app.route('/media-page/<int:folder_id>', methods=['GET','POST'])
 def media_page(folder_id):
-    return render_template('media.html',folder_id=folder_id)
+    cursor.execute("Select folder_name from folders where   folder_id=%s"),(folder_id,)
+    folder=cursor.fetchone()
+    cursor.execute("Select * from media where folder_id=%s",(folder_id,))
+    media=cursor.fetchall()
+    
+    return render_template('media.html',folder_id=folder_id,media=media, folder_name=folder[0])
 
 @app.route('/add-media', methods=['POST','GET'])
 def add_media():
@@ -59,13 +66,24 @@ def add_media():
     folder_name= folder[0]
     folder_path= os.path.join('media', folder_name)
     os.makedirs(folder_path, exist_ok=True)
-    
+
+
     files = request.files.getlist('media')
 
     for file in files:
         file.save(os.path.join(folder_path,file.filename))
+        media_type= mimetypes.guess_type(file.filename)[0]
+        if media_type and media_type.startswith('image'):
+            media_type='image'
+        elif media_type and media_type.startswith('video'):
+            media_type='video'
+        cursor.execute("insert into media (folder_id, media_type, media_name ) values (%s,%s,%s)",(folder_id,media_type,file.filename))
+        db.commit()
     return redirect(f'/media-page/{folder_id}')
 
+@app.route('/media/<folder_name>/<filename>')
+def serve_media(folder_name,filename):
+    return send_from_directory(os.path.join('media',folder_name,),filename)
 
 if __name__=='__main__':
     app.run(debug=True)
