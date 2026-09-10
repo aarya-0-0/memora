@@ -19,8 +19,11 @@ body h1{
     background-color: deeppink;
     padding: 5px;
     border-radius: 8px;
-    margin: 10px;
+    margin: 20px;
     
+}
+.logo{
+    font-size: 25px;
 }
 .navlinks{
     margin-left: auto;
@@ -30,6 +33,7 @@ body h1{
     color: pink;
     text-decoration: none;
     margin-left: 15px;
+    font-size: 25px;
 }
 .footer{
     background: deeppink;
@@ -41,8 +45,10 @@ body h1{
 .button{
     text-align: center;
     background-color: deeppink;
-    padding: 0 auto;
+    padding: 10px;
     margin: 0 auto;
+    border-radius: 10px;
+    font-size: 25px;
 }
 .button a{
     text-decoration: none;
@@ -52,17 +58,20 @@ body h1{
 .add-mem{
     background: pink;
     text-align: center;
-    margin: 0 100px;
+    margin: 0 600px;
     border-radius: 20px;
     margin-bottom: 20px;
     padding: 20px;
     color: deeppink;
 }
 .add-mem p{
-    text-align: left;
+    text-align: center;
+    font-size: 25px;
     margin: 0 auto;
 }
+
 hr{
-    height: 1px;
+    height: 2px;
     background-color: deeppink;
 }
+

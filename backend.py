@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 from dotenv import load_dotenv
 import mysql.connector 
 import os
@@ -36,6 +36,8 @@ def add():
 
 @app.route('/create-mem-folder')
 def create_mem_folder():
+    folder_name=request.form['folder_name']
+    folder_description=request.form['folder_description']
     return redirect('/')
 
 
