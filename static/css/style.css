@@ -81,22 +81,23 @@ hr{
     width: 100%;
     font-size: 25px;
     border-radius: 20px;
-
+    text-align: center;
 
 }
 
-.folder-container{
+.folder-container {
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     display: grid;
-    padding: 50px 50px;
+    padding: 50px;
 }
 img{
     object-fit: contain;
     margin:20px auto;
     padding: 40px;    
 }
-.folder-card h2,p{
+.folder-card h2,
+.folder-card p {
     margin-left: 20px;
-    
 }
+    

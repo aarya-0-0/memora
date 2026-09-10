@@ -5,10 +5,15 @@
 <div class="folder-container">
 {%for folder in folders%}
 <div class="folder-card">
-<img src="{{url_for('static', filename='images/folder.png')}}">
-<h2>{{folder[1]}}</h2>
-<p>{{folder[2]}}</p>
+    <img src="{{url_for('static', filename='images/folder.png')}}">
+    <h2>{{folder[1]}}</h2>
+    <p>{{folder[2]}}</p>
+    <form method="GET" action="/media-page">
+        <button class="button" type="button">VIEW</button>
+
+</form>
 </div>
+    {%endfor%}
+
 </div>
-{%endfor%}
 {%endblock%}
