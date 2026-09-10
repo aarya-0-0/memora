@@ -1,6 +1,14 @@
 {%extends 'base.html'%}
 {%block title%}Memora - Add {%endblock%}
 {%block content%}
-<div class="add-mem">
-    <h1></h1>
+    <h1>Create Mem folder</h1>
+    <div class="add-mem">
+    <form method="post" action="/create-mem-folder">
+    <p>Mem-Folder Name: <input type="text" requried placeholder="Vacation-2026"></p><br>
+    <p>Mem-Folder Description: <input type="text"  placeholder=" A lovely journey to KTM"></p>
+    <br>
+    <hr>
+    <button class="button">Create</button>
+    </form>
 </div>
+{%endblock%}

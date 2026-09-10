@@ -49,3 +49,20 @@ body h1{
     color: pink;
 
 }
+.add-mem{
+    background: pink;
+    text-align: center;
+    margin: 0 100px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    color: deeppink;
+}
+.add-mem p{
+    text-align: left;
+    margin: 0 auto;
+}
+hr{
+    height: 1px;
+    background-color: deeppink;
+}

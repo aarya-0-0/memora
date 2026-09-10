@@ -30,5 +30,14 @@ def folders():
         
     return render_template('folders.html', folders=folders)
 
+@app.route('/add')
+def add():
+    return render_template('add.html')
+
+@app.route('/create-mem-folder')
+def create_mem_folder():
+    return redirect('/')
+
+
 if __name__=='__main__':
     app.run(debug=True)
