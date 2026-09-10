@@ -8,7 +8,7 @@
     <img src="{{url_for('static', filename='images/folder.png')}}">
     <h2>{{folder[1]}}</h2>
     <p>{{folder[2]}}</p>
-    <form method="POST" action="/media-page">
+    <form method="POST" action="/media-page/{{folder[0]}}">
     <button class="button" type="submit">VIEW</button>
 
 </form>
